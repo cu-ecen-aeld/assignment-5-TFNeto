@@ -13,9 +13,9 @@ AESD_ASSIGNMENTS_VERSION = '0c8b839bf5c8cbcbd8c70559f8121404600f7d82'
 AESD_ASSIGNMENTS_SITE = 'git@github.com:cu-ecen-aeld/assignments-3-and-later-TFNeto.git'
 AESD_ASSIGNMENTS_SITE_METHOD = git
 AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
-
+AESD_ASSIGNMENTS_OVERRIDE_SRCDIR=/home/tiagoneto/Learning/assignment-1-TFNeto
 define AESD_ASSIGNMENTS_BUILD_CMDS
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app all
+	$(MAKE) $(TARGET_CONFIGURE_OPTS) CROSS_COMPILE=aarch64-none-linux-gnu- -C $(@D)/finder-app all 
 endef
 
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
@@ -26,7 +26,9 @@ define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 
 	$(INSTALL) -m 0755 $(@D)/finder-app/finder.sh $(TARGET_DIR)/usr/bin 
 	$(INSTALL) -m 0755 $(@D)/finder-app/finder-test.sh $(TARGET_DIR)/usr/bin 
-	$(INSTALL) -m 0755 $(@D)/finder-app/writer $(TARGET_DIR)/usr/bin 
+	$(INSTALL) -m 0755 $(@D)/finder-app/writer $(TARGET_DIR)/usr/bin/
+	mkdir -p $(TARGET_DIR)/etc/finder-app/conf
+	$(INSTALL) -m 0644 $(@D)/finder-app/conf/* $(TARGET_DIR)/etc/finder-app/conf/
 endef
 
 $(eval $(generic-package))
