@@ -1,0 +1,32 @@
+#!/bin/sh
+# Script for assignment 7 part 2
+#
+# i. Perform operations on startup to load the scull driver and on shutdown to unload. 
+# ii. Perform operations on startup to load the faulty driver and on shutdown to unload.
+# iii. Run modprobe on the hello module to load on startup and use rmmod to remove on shutdown.
+#
+
+if [ "$1" = "start" ]
+then
+    echo "Starting ldd modules"
+    
+    # Load scull driver
+    modprobe scull
+    # Load faulty driver
+    modprobe faulty
+    # Load hello module
+    modprobe hello
+    
+elif [ "$1" = "stop" ]
+then
+    echo "Stopping ldd modules"
+    # Unload hello module
+    rmmod hello
+    # Unload faulty driver
+    rmmod faulty
+    # Unload scull driver
+    rmmod scull
+else
+    echo "Usage: $0 {start|stop}"
+    exit 1
+fi
