@@ -7,7 +7,7 @@
 ##############################################################
 
 
-AESD_CHAR_VERSION = 'd5fae2dbfb74559e006f6c47624200c5735106ed'
+AESD_CHAR_VERSION = 'bb23966ee94ab8e1bcfd76ea480d02eb0233a0d2'
 AESD_CHAR_SITE = 'git@github.com:cu-ecen-aeld/assignments-3-and-later-TFNeto.git'
 AESD_CHAR_SITE_METHOD = git
 #AESD_CHAR_OVERRIDE_SRCDIR="/home/tiagoneto/learning/assignments-3-and-later-TFNeto"
